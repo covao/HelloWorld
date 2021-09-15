@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="p5.min.js"></script>
+  </head>
+      <style type="text/css">
+        @font-face {
+            font-family: 'digit'; 
+			src: url('./Digit.TTF') format("truetype");        }
+    </style>
+  <body>
+    <main>
+    </main>
+<script>
+function preload() {
+  //font = loadFont('Digit.TTF');
+}
+
+function setup() {
+  c=createCanvas(600, 300);
+  //c.canvas.getContext('2d').;
+  //textFont(font);
+  textFont('digit');
+  textAlign(LEFT, CENTER);
+}
+
+function draw() {
+  background(0);
+  fill('#32cd32');
+  textSize(64);
+  let date = new Date();
+  let s1= year()+"-"+ ("  " + month() ).substr(-2)+"-"+("  " + day() ).substr(-2)+" "+[ "SUN", "MON", "TSU", "WED", "THU", "FRI", "SAT" ][ date.getDay()] ;
+  translate(40, 0);
+  rotate(0.0);
+  text(s1, 20, 80);
+
+  textSize(128);
+  let s2= ("  " + +hour() ).substr(-2)+":"+ ("00" + minute() ).substr(-2)+":"+  ("00" + second() ).substr(-2);
+  text(s2, 20, 200);
+}
+
+</script>
+  </body>
+</html>
