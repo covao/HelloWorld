@@ -26,14 +26,14 @@ function setup() {
 function draw() {
   background(0);
   fill('#32cd32');
-  textSize(120);
+  textSize(100);
   let date = new Date();
   let s1= year()+"-"+ ("  " + month() ).substr(-2)+"-"+("  " + day() ).substr(-2)+" "+[ "SUN", "MON", "TSU", "WED", "THU", "FRI", "SAT" ][ date.getDay()] ;
   translate(0, 100);
   rotate(0.0);
   text(s1, 0, 100);
 
-  textSize(250);
+  textSize(200);
   let s2= ("  " + +hour() ).substr(-2)+":"+ ("00" + minute() ).substr(-2)+":"+  ("00" + second() ).substr(-2);
   text(s2, 0, 400);
   
