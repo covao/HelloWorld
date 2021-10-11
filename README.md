@@ -6,3 +6,5 @@ Hello World [http://covao.github.io/HelloWorld/](http://covao.github.io/HelloWor
  
  [Shogame](https://covao.github.io/HelloWorld/Shogame.html)
  
+ [SimpleCam](https://covao.github.io/HelloWorld/simple_cam.html)
+ 
