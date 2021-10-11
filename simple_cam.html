@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+
+<script src="p5.min.js"></script>
+
+<script>
+
+function setup() {
+  let constraints = {
+  video: {
+    width: {
+      min: 720,
+      ideal: 1280,
+      max: 1280,
+    },
+    height: {
+      min: 400,
+      ideal: 720,
+      max: 720
+    },
+    //facingMode: 'user'
+    facingMode: 'environment'
+  },
+   audio: false
+  };
+
+  document.body.style.overflow = "hidden";
+  c=createCanvas(windowWidth, windowHeight,WEBGL);
+  c.canvas.id='canvasOutput';
+  capture = createCapture(constraints);
+  //capture = createCapture(VIDEO);
+  capture.hide();
+  //capture.size(1280,720);
+  capture.id='videoInput';
+  frameRate(30);
+}
+
+function draw() {
+  //capture.loadPixels();
+   translate(-windowWidth/2, -windowHeight/2);
+  imageMode(CORNERS);
+  image(capture,0,0,windowWidth, windowHeight);
+  
+}
+
+function mousePressed() { // Full screen
+  let fs = fullscreen();
+  fullscreen(!fs);
+}
+
+function windowResized() { // Resize
+  resizeCanvas(windowWidth, windowHeight);
+
+}
+
+
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
