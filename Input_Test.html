@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <script src="p5.min.js"></script>
+<script>
+function setup() {
+  createCanvas(640, 480);
+  background('grey');
+  inp = createInput('');
+  inp.elt.style='font-size:500%';
+  inp.position(0, 0);
+  inp.size(500,100);
+  
+}
+
+function draw() {
+  //console.log('you are typing: ', this.value());
+ background('rgba(0,255,0, 0.25)');
+ fill(color(0, green, 0))
+ textSize(100);
+ text(inp.value(),100,300);
+}
+
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
