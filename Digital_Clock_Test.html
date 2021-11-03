@@ -1,6 +1,4 @@
-
 <html>
-
   <head>
     <script src="p5.min.js"></script>
   </head>
@@ -9,65 +7,70 @@
             font-family: 'digit'; 
 			src: url('./Digit.TTF') format("truetype");        }
     </style>
-  <body>
+  <body bgcolor="#00000">
     <main>
     </main>
 <script>
-function preload() {
-  //font = loadFont('Digit.TTF');
-}
 
 function setup() {
-  c=createCanvas(windowWidth*0.98, windowHeight*0.98);
-  //c.canvas.getContext('2d').;
-  //textFont(font);
+  document.body.style.overflow = "hidden";
+  c=createCanvas(windowWidth, windowHeight);
+  
   textFont('digit');
   textAlign(LEFT, CENTER);
-  frameRate(2);
+  frameRate(10);
   pos=1.0;
- //fullscreen(true);
- window.scrollTo(0,1);
+  sc=2*(windowWidth/1920);
+  
 }
 
 function draw() {
-  scale(pos,pos);
-  translate(100,0)
   background(0);
-  fill('#32cd32');
+  scale(pos*sc,pos*sc);
+  translate(100,0)
+  green = frameCount*10
+  if(green>255){
+    green = 255;
+    frameRate(2);
+  }
+   
+  fill(color(0, green, 0));
   textSize(100);
   let date = new Date();
+  
   let s1= year()+"-"+ ("  " + month() ).substr(-2)+"-"+("  " + day() ).substr(-2)+" "+[ "SUN", "MON", "TSU", "WED", "THU", "FRI", "SAT" ][ date.getDay()] ;
   translate(0, 50);
-  rotate(0.0);
   text(s1, 0, 100);
 
   textSize(200);
-  let s2= ("  " + +hour() ).substr(-2)+":"+ ("00" + minute() ).substr(-2)+":"+  ("00" + second() ).substr(-2);
+  let s2 = ("  " + +hour() ).substr(-2)+":"+ ("00" + minute() ).substr(-2)+"";
   text(s2, 0, 300);
+  
+  textSize(140);
+  let s3 = ("00" + second() ).substr(-2);
+  text(s3, 520, 330);
   
 }
 
 function mouseWheel(event) {
-  print(event.delta);
-  //move the square according to the vertical scroll amount
-  pos += event.delta/1000;
-
-if(pos>4.0){
-  pos=4.0;
-}else if(pos<0.5){
-  pos=0.5;
-} 
- //uncomment to block page scrolling
-  //return false;
+  //print(event.delta);
+  pos -= event.delta/1000;
+  if(pos>4.0){
+    pos=4.0;
+  }else if(pos<0.5){
+    pos=0.5;
+  } 
 }
 
-function mousePressed() {
+function mouseClicked() { // Full screen
   let fs = fullscreen();
   fullscreen(!fs);
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth*0.98, windowHeight*0.98);
+function windowResized() { // Resize
+  resizeCanvas(windowWidth, windowHeight);
+  sc=2*(windowWidth/1920);
+
 }
 
 
