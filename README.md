@@ -10,3 +10,5 @@ Hello World [http://covao.github.io/HelloWorld/](http://covao.github.io/HelloWor
  
  [Input Test](https://covao.github.io/HelloWorld/Input_Test.html)  
  
+ [Slider UI Test](https://covao.github.io/HelloWorld/p5_ui_slider_test.html)  
+ 
