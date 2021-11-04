@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <script src="p5.min.js"></script>
+<script>
+
+let rSlider, gSlider, bSlider;
+
+function setup() {
+  // create canvas
+  c1=createCanvas(640, 480);
+  textSize(15);
+  noStroke();
+
+  // create sliders
+  rSlider = createSlider(0, 255, 100);
+  rSlider.position(20, 50);
+  gSlider = createSlider(0, 255, 0);
+  gSlider.position(20, 200);
+  bSlider = createSlider(0, 255, 255);
+  bSlider.position(20, 350);
+  
+  
+}
+
+function draw() {
+  const r = rSlider.value();
+  const g = gSlider.value();
+  const b = bSlider.value();
+  background(r, g, b);
+  text('red', rSlider.x + rSlider.width, rSlider.y);
+  text('green', gSlider.x  + gSlider.width, gSlider.y);
+  text('blue', bSlider.x  + bSlider.width, bSlider.y);
+}
+</script>
+
+</head>
+<body>
+</body>
+</html>
+
