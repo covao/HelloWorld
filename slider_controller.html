@@ -20,9 +20,12 @@ function setup() {
   document.body.style.overflow = "hidden";
 
 	// PCでのスクロール禁止
-	document.addEventListener("mousewheel", scroll_control, { passive: false });
+	//document.addEventListener("mousewheel", scroll_control, { passive: false });
 	// スマホでのタッチ操作でのスクロール禁止
-	document.addEventListener("touchmove", scroll_control, { passive: false });
+	//document.addEventListener("touchmove", scroll_control, { passive: false });
+	document.body.addEventListener( 'touchmove', function(e){
+		e.preventDefault();
+	});
 
   c=createCanvas(windowWidth, windowHeight);
   c.canvas.style.pointerEvents='none';
@@ -60,6 +63,7 @@ function setup() {
   button.mousePressed(changeFS);
   
   x=0;y=0;
+  var evtarget;
 }
 
 function changeFS(){
@@ -69,11 +73,13 @@ function changeFS(){
 
 // スクロール関連メソッド
 function scroll_control(event) {
+	evtarget=event.target;
         if ($(event.target).closest('.js-can-scroll').length > 0) {
             event.stopPropagation();
         } else {
             event.preventDefault();
-        }}
+        }
+}
 
 function updateValue(){
 	console.log("Update");
