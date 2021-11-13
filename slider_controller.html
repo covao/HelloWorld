@@ -20,7 +20,7 @@ function setup() {
 	// PCでのスクロール禁止
 	document.addEventListener("mousewheel", scroll_control, { passive: false });
 	// スマホでのタッチ操作でのスクロール禁止
-	//document.addEventListener("touchmove", scroll_control, { passive: false });
+	document.addEventListener("touchmove", scroll_control, { passive: false });
 
   c=createCanvas(windowWidth, windowHeight);
   c.canvas.style.pointerEvents='none';
