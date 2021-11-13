@@ -1,3 +1,6 @@
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <html>
 
 <head>
@@ -16,9 +19,8 @@ function setup() {
 
   document.body.style.overflow = "hidden";
 
-
 	// PCでのスクロール禁止
-	document.addEventListener("mousewheel", scroll_control, { passive: false });
+	//document.addEventListener("mousewheel", scroll_control, { passive: false });
 	// スマホでのタッチ操作でのスクロール禁止
 	//document.addEventListener("touchmove", scroll_control, { passive: false });
 
@@ -38,7 +40,6 @@ function setup() {
   noStroke();
 
   // create sliders
-  
   ySlider = createSlider(-10, 10, 0);
   ySlider.elt.style.opacity=0.7;
   ySlider.elt.style.webkitAppearance='slider-vertical';
@@ -48,16 +49,26 @@ function setup() {
   xSlider.elt.style.opacity=0.7;
   xSlider.elt.addEventListener('change', ReleaseX);
 
-  button = createButton('click me');
-  button.elt.style.opacity=0.7;
-  x=1000;
-  y=500;
+  // create button
+  button = createButton('[ ]');
+  //button.elt.style.opacity=0.7;
+  button.mousePressed(changeFS);
+  
+  x=0;y=0;
+}
+
+function changeFS(){
+   let fs = fullscreen();
+    fullscreen(!fs);
 }
 
 // スクロール関連メソッド
 function scroll_control(event) {
-    event.preventDefault();
-}
+        if ($(event.target).closest('.js-can-scroll').length > 0) {
+            event.stopPropagation();
+        } else {
+            event.preventDefault();
+        }}
 
 function updateValue(){
 	console.log("Update");
@@ -80,6 +91,9 @@ function draw() {
   
   xSlider.position(1500*sc, 600*sc);
   xSlider.size(400*sc,200*sc);
+  
+   button.position(0, 0);
+   button.size(100*sc,100*sc);
 
   x = x+xSlider.value();
   y = y-ySlider.value();
