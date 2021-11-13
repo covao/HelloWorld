@@ -1,0 +1,88 @@
+<html>
+
+<head>
+</head>
+<body>
+</body>
+
+<script src="p5.min.js"></script>
+
+<script>
+
+let xSlider, ySlider;
+
+function setup() {
+
+  document.body.style.overflow = "hidden";
+  c=createCanvas(windowWidth, windowHeight);
+  sc=(windowWidth/1920);
+  
+  translate(0, 0);
+
+  img = new Image();
+  img.src = 'green-forest.jpg';
+
+  img2 = new Image();
+  img2.src = 'bee.png';
+  
+  textSize(15);
+  noStroke();
+
+  // create sliders
+  
+  ySlider = createSlider(-10, 10, 0);
+  ySlider.elt.style.opacity=0.7;
+  ySlider.elt.style.webkitAppearance='slider-vertical';
+  ySlider.elt.addEventListener('change', ReleaseY);
+  
+  xSlider = createSlider(-10, 10, 0);
+  xSlider.elt.style.opacity=0.7;
+  xSlider.elt.addEventListener('change', ReleaseX);
+
+  button = createButton('click me');
+  button.elt.style.opacity=0.7;
+  x=1000;
+  y=500;
+}
+
+function updateValue(){
+	console.log("Update");
+}
+
+function ReleaseX(){
+	xSlider.value(0);
+}
+
+function ReleaseY(){
+	ySlider.value(0);
+}
+
+function draw() {
+  background(0);
+
+  scale(sc);
+  ySlider.position(150*sc, 600*sc);
+  ySlider.size(100*sc,200*sc);
+  
+  xSlider.position(1500*sc, 700*sc);
+  xSlider.size(200*sc,100*sc);
+
+  x = x+xSlider.value();
+  y = y-ySlider.value();
+  
+  let ctx = c.canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0,img.width,img.height, 0, 0, 1920, 1080);
+  ctx.drawImage(img2, x, y);
+  ctx.scale(1.5, 1.5);
+  
+}
+
+function windowResized() { // Resize
+  resizeCanvas(windowWidth, windowHeight);
+  sc=(windowWidth/1920);
+
+}
+
+</script>
+</html>
+
