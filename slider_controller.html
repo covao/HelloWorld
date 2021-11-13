@@ -5,7 +5,7 @@
 
 <head>
 </head>
-<body>
+<body bgcolor="#00000">
 </body>
 
 <script src="p5.min.js"></script>
@@ -20,9 +20,9 @@ function setup() {
   document.body.style.overflow = "hidden";
 
 	// PCでのスクロール禁止
-	//document.addEventListener("mousewheel", scroll_control, { passive: false });
+	document.addEventListener("mousewheel", scroll_control, { passive: false });
 	// スマホでのタッチ操作でのスクロール禁止
-	//document.addEventListener("touchmove", scroll_control, { passive: false });
+	document.addEventListener("touchmove", scroll_control, { passive: false });
 
   c=createCanvas(windowWidth, windowHeight);
   c.canvas.style.pointerEvents='none';
@@ -50,7 +50,12 @@ function setup() {
   xSlider.elt.addEventListener('change', ReleaseX);
 
   // create button
-  button = createButton('[ ]');
+  button = createButton('[&nbsp;&nbsp;]');
+  button.elt.style.background='transparent';
+  button.elt.style.color='#ffffff';
+  button.elt.style.border='transparent';
+  button.elt.style.fontSize='32';
+  
   //button.elt.style.opacity=0.7;
   button.mousePressed(changeFS);
   
@@ -101,7 +106,7 @@ function draw() {
   let ctx = c.canvas.getContext("2d");
   ctx.drawImage(img, 0, 0,img.width,img.height, 0, 0, 1920, 1080);
   ctx.drawImage(img2, x, y);
-  ctx.scale(1.5, 1.5);
+  ctx.scale(sc, sc);
   
 }
 
