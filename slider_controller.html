@@ -15,6 +15,7 @@ function setup() {
 
   document.body.style.overflow = "hidden";
   c=createCanvas(windowWidth, windowHeight);
+  c.canvas.style.pointerEvents='none';
   sc=(windowWidth/1920);
   
   translate(0, 0);
@@ -61,11 +62,11 @@ function draw() {
   background(0);
 
   scale(sc);
-  ySlider.position(150*sc, 600*sc);
-  ySlider.size(100*sc,200*sc);
+  ySlider.position(150*sc, 550*sc);
+  ySlider.size(200*sc,300*sc);
   
-  xSlider.position(1500*sc, 700*sc);
-  xSlider.size(200*sc,100*sc);
+  xSlider.position(1500*sc, 600*sc);
+  xSlider.size(400*sc,200*sc);
 
   x = x+xSlider.value();
   y = y-ySlider.value();
