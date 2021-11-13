@@ -9,11 +9,19 @@
 
 <script>
 
+
 let xSlider, ySlider;
 
 function setup() {
 
   document.body.style.overflow = "hidden";
+
+
+	// PCでのスクロール禁止
+	document.addEventListener("mousewheel", scroll_control, { passive: false });
+	// スマホでのタッチ操作でのスクロール禁止
+	//document.addEventListener("touchmove", scroll_control, { passive: false });
+
   c=createCanvas(windowWidth, windowHeight);
   c.canvas.style.pointerEvents='none';
   sc=(windowWidth/1920);
@@ -44,6 +52,11 @@ function setup() {
   button.elt.style.opacity=0.7;
   x=1000;
   y=500;
+}
+
+// スクロール関連メソッド
+function scroll_control(event) {
+    event.preventDefault();
 }
 
 function updateValue(){
