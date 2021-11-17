@@ -1,0 +1,81 @@
+<html>
+<head>
+	<script src="p5.min.js"></script>
+</head>
+<body>
+<main>
+</main>
+<script>
+	function setup() {
+	// create sliders
+	ySlider = createSlider(-1.0, 1.0, 0,0.01);
+	ySlider.elt.style.opacity=0.7;
+	ySlider.elt.style.webkitAppearance='none';
+	//ySlider.elt.style.webkitAppearance='slider-vertical';
+	ySlider.elt.style.transform='rotate(270deg)'
+	ySlider.elt.style.borderRadius='20px';
+	ySlider.elt.addEventListener('change', ReleaseY);
+	xSlider = createSlider(-1.0, 1.0, 0,0.01);
+	xSlider.elt.style.opacity=0.7;
+	xSlider.elt.style.webkitAppearance='none';
+	xSlider.elt.style.borderRadius='20px';
+	xSlider.elt.addEventListener('change', ReleaseX);
+	// create button
+	button = createButton('[&nbsp;&nbsp;&nbsp;]');
+	button.elt.style.background='transparent';
+	button.elt.style.color='#ffffff';
+	button.elt.style.border='transparent';
+	button.elt.style.fontSize='32';
+	button.mousePressed(changeFS);
+	sc=(windowWidth/1920);
+	canv=createCanvas(windowWidth, windowHeight);
+	img = new Image();
+	img.src ="http://raspberrypi:8887/video";
+
+	socket = new WebSocket('ws://raspberrypi:8887/wsDrive');
+//	socket.onmessage = function (event) {
+//		console.log(event.data);
+//	}
+	//frameRate(10);
+	}
+	function draw() {
+	background(0);
+	let ctx = canv.canvas.getContext("2d");
+	ctx.drawImage(img,0 , 0,img.width,img.height, 0, 0, 1920*sc, 1080*sc);
+	//ctx.scale(sc, sc);
+	//scale(sc);
+	ySlider.position(150*sc, 550*sc);
+	ySlider.size(400*sc,200*sc);
+	xSlider.position(1500*sc, 600*sc);
+	xSlider.size(400*sc,200*sc);
+	button.position(0, 0);
+	button.size(100*sc,100*sc);
+
+	data = JSON.stringify({ 'angle': xSlider.value(),
+	'throttle':ySlider.value(),
+	'drive_mode': "user",
+	'recording': false})
+	//console.log(data);
+	// $.post(driveURL, data)
+	try{
+	socket.send(data);
+	}catch{
+	}
+}
+	function ReleaseX(){
+	xSlider.value(0);
+}
+	function ReleaseY(){
+	ySlider.value(0);
+}
+	function changeFS(){
+	let fs = fullscreen();
+	fullscreen(!fs);
+}
+	function windowResized() { // Resize
+	resizeCanvas(windowWidth, windowHeight);
+	sc=(windowWidth/1920);
+	}
+	</script>
+</body>
+</html>
