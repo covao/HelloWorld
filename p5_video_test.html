@@ -16,9 +16,11 @@ function preload(){
 	//fname='./small.mp4';
 	vid = createVideo(fname,function () {
 		//vid.hide();
+		vid.size(320,240);
 		vid.loop();
 		vid.volume(0);
 		vid.pause();
+		vid.play();
 	});
 
 }
@@ -26,7 +28,7 @@ function preload(){
 function setup(){
 	//createCanvas(640,480);
 	flag=false;
-	vid.size(320,240);
+
 	//vid.loop();
 	//vid.hide();
 	//vid.addCue();
@@ -39,7 +41,7 @@ function draw() { //Draw Loop
 	//vid.stop();
 	//vid.time(t);
 	//if(flag){
-		vid.play();
+		
 
 	//}
 	//vid.speed(1);
