@@ -149,6 +149,9 @@ function draw() { //Draw Loop
 			spd = 1.0;
 		}
 		//V1.speed(spd);
+		if(spd>0){
+			V1.play();
+		}
 		V1.playbackRate=spd;
 	}else{
 		let ctx = canv.canvas.getContext("2d");
