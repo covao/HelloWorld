@@ -14,24 +14,33 @@
 function preload(){
 	fname='./tub_movie_mft2022_1.mp4';
 	//fname='./small.mp4';
-	vid = createVideo(fname,function () {
-		//vid.hide();
-		vid.size(320,240);
-		vid.loop();
-		vid.volume(0);
-		vid.pause();
-		vid.play();
-	});
-
+	vid = document.createElement("video");
+	vid.src=fname;
+	vid.hidden=true;
+	vid.autoplay=true;
+	vid.load();
+	//vid = createVideo(fname,function () {
+	//	//vid.hide();
+	//	vid.size(320,240);
+	//	vid.loop();
+	//	vid.volume(0);
+	//	vid.pause();
+	//	vid.play();
+	//});
 }
 
 function setup(){
 	//createCanvas(640,480);
 	flag=false;
-
+	canv=createCanvas(640, 480);
 	//vid.loop();
 	//vid.hide();
 	//vid.addCue();
+	button = createButton('click me');
+	button.mousePressed(startplay);
+
+
+
 	t=0;
 }
 
@@ -41,14 +50,22 @@ function draw() { //Draw Loop
 	//vid.stop();
 	//vid.time(t);
 	//if(flag){
-		
+	t=t+1;
+	if(t==100){
+		//vid.play();
+	}
+
+	let ctx = canv.canvas.getContext("2d");
+  	ctx.drawImage(vid, 0, 0);
 
 	//}
 	//vid.speed(1);
 	//image(vid, 0, 0,640,480);
 
 }
-
+function startplay(){
+	vid.play();
+}
 </script>
 </body>
 </html>
