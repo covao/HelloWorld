@@ -11,16 +11,19 @@
 </main>
 
 <script>
-function setup(){
-	createCanvas(640,480);
-	flag=false;
+function preload(){
 	vid = createVideo('./tub_movie_mft2022_1.mp4',function () {
 		vid.hide();
 		vid.loop();
 		vid.volume(0);
-		vid.play();
-		vid.speed(1);
+		vid.pause();
 	});
+
+}
+
+function setup(){
+	createCanvas(640,480);
+	flag=false;
 	//vid.size(320,240);
 	//vid.loop();
 	//vid.hide();
@@ -35,6 +38,7 @@ function draw() { //Draw Loop
 	//vid.time(t);
 	//if(flag){
 		vid.play();
+
 	//}
 	//vid.speed(1);
 	image(vid, 0, 0,640,480);
