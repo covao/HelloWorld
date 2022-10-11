@@ -14,6 +14,6 @@ Hello World [http://covao.github.io/HelloWorld/](http://covao.github.io/HelloWor
  
  [Slider Controller Test](https://covao.github.io/HelloWorld/slider_controller.html)  
 
- [Donkey Web UI Test](https://covao.github.io/HelloWorld/donkey_web_ui_test.html)  
+ [Donkey Web UI Test](https://covao.github.io/HelloWorld/copilot.html?demo)  
 
  [Video Test](https://covao.github.io/HelloWorld/p5_video_test.html)  
