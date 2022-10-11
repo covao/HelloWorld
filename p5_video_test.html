@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>Video Test</title>
+<style>
+
+</style>
+<script src="./p5.min.js"></script>
+</head>
+<body>
+<main>
+</main>
+
+<script>
+function setup(){
+	createCanvas(640,480);
+	flag=false;
+	vid = createVideo('./tub_movie_mft2022_1.mp4',function () {
+		vid.hide();
+		vid.loop();
+		vid.volume(0);
+		vid.play();
+		vid.speed(1);
+	});
+	//vid.size(320,240);
+	//vid.loop();
+	//vid.hide();
+	//vid.addCue();
+	t=0;
+}
+
+
+function draw() { //Draw Loop
+	// Display video
+	//vid.stop();
+	//vid.time(t);
+	//if(flag){
+		vid.play();
+	//}
+	//vid.speed(1);
+	image(vid, 0, 0,640,480);
+
+}
+
+</script>
+</body>
+</html>
