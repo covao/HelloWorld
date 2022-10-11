@@ -26,19 +26,12 @@ function setup(){
 	URLparam = location.search;//URL Parameter
 	if(URLparam.match(/demo/)=='demo'){
 		demoMode=true;
-		//V1 = createVideo('./tub_movie_mft2022_1.mp4',function (){//Demo Video
-			//V1.hide();
-			//V1.volume(0);
-			//V1.pause();
-			//V1.loop();
-
 		V1 = document.createElement("video");
-		V1.src='./tub_movie_mft2022_1.mp4';
-		V1.hidden=true;
-		V1.autoplay=true;
+		V1.src = './tub_movie_mft2022_1.mp4';
+		V1.hidden = true;
+		V1.autoplay = true;
+		V1.muted = true;
 		V1.pause();
-		//V1.load();
-		//});
 	}else{
 		demoMode=false;
 	}
@@ -137,9 +130,6 @@ function draw() { //Draw Loop
 		xOffset = 20+Math.round(xSlider.value()*20.0);
 		let ctx = canv.canvas.getContext("2d");
 		ctx.drawImage(V1,xOffset,0,V1.videoWidth-40,V1.videoHeight, 0,0,1920*sc, 1080*sc);
-		//ctx.drawImage(V1,xOffset,0,V1.width,V1.height);
-
-		//image(V1,0,0,1920*sc, 1080*sc,xOffset,0,V1.width-40,V1.height);
 		var spd;
 		if(DM!="local"){
 			spd = Math.abs(Math.round(ySlider.value()*10.0)/10.0);
@@ -149,14 +139,13 @@ function draw() { //Draw Loop
 		}else{
 			spd = 1.0;
 		}
-		//V1.speed(spd);
 		if(spd>0 && V1.currentTime==0){
 			V1.play();
 		}
 		V1.playbackRate=spd;
 	}else{
 		let ctx = canv.canvas.getContext("2d");
-		ctx.drawImage(img,0 , 0,img.width,img.height, 0*sc, 0, 1920*sc, 1080*sc);
+		ctx.drawImage(img,0 , 0,img.width,img.height, 0, 0, 1920*sc, 1080*sc);
 	}
 	//Get GamePad state
 	Pads = navigator.getGamepads(); 
@@ -264,8 +253,6 @@ function draw() { //Draw Loop
 	}
 	text(str(MaxAccel) ,1170*sc, 570*sc);
 	pop();
-
-	//
 
 	lv = ySlider.value()*100;//Slider Level
 	if(abs(lv)>MaxAccel){
