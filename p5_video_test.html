@@ -15,7 +15,7 @@ function preload(){
 	fname='./tub_movie_mft2022_1.mp4';
 	//fname='./small.mp4';
 	vid = createVideo(fname,function () {
-		vid.hide();
+		//vid.hide();
 		vid.loop();
 		vid.volume(0);
 		vid.pause();
@@ -24,9 +24,9 @@ function preload(){
 }
 
 function setup(){
-	createCanvas(640,480);
+	//createCanvas(640,480);
 	flag=false;
-	//vid.size(320,240);
+	vid.size(320,240);
 	//vid.loop();
 	//vid.hide();
 	//vid.addCue();
@@ -43,7 +43,7 @@ function draw() { //Draw Loop
 
 	//}
 	//vid.speed(1);
-	image(vid, 0, 0,640,480);
+	//image(vid, 0, 0,640,480);
 
 }
 
