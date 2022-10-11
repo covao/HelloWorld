@@ -36,7 +36,8 @@ function setup(){
 		V1.src='./tub_movie_mft2022_1.mp4';
 		V1.hidden=true;
 		V1.autoplay=true;
-		V1.load();
+		V1.pause();
+		//V1.load();
 		//});
 	}else{
 		demoMode=false;
@@ -149,7 +150,7 @@ function draw() { //Draw Loop
 			spd = 1.0;
 		}
 		//V1.speed(spd);
-		if(spd>0){
+		if(spd>0 && V1.currentTime>0){
 			V1.play();
 		}
 		V1.playbackRate=spd;
